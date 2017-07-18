@@ -4,6 +4,9 @@ var TEXT = document.querySelector('[data-image-title]');
 var MAIN_IMAGE = document.querySelector(".detail-image");
 var MAIN_TEXT = document.querySelector(".detail-image-title")
 
+
+
+
 function updateImage(anchor) {
     anchor.forEach(function(element) {
         element.addEventListener('click', function(event) {
@@ -23,7 +26,21 @@ function updateText(anchor) {
 };
 
 
+function updateRandom(anchor) {
+    anchor.forEach(function(element) {
+        element.addEventListener('click', function(event) {
+            var randomInteger = (Math.floor((Math.random())*ANCHORS.length));
+            event.preventDefault();
+            MAIN_IMAGE.setAttribute('src', anchor[randomInteger].getAttribute('href'));
+            var randomInteger = (Math.floor((Math.random())*ANCHORS.length));
+            MAIN_TEXT.textContent = anchor[randomInteger].getAttribute('data-image-title');
+        });
+    });
+};
 
-updateImage(ANCHORS);
-updateText(ANCHORS);
 
+
+
+// updateImage(ANCHORS);
+// updateText(ANCHORS);
+updateRandom(ANCHORS);
